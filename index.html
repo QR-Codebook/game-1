@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weiterleitung...</title>
+    <script>
+        // Objekt mit den Pfaden und zugehörigen Zieladressen
+        const redirects = {
+            "link1": "https://example1.com",
+            "link2": "https://example2.com",
+            "link3": "https://example3.com"
+        };
 
+        // Hole den aktuellen Pfad aus der URL (ohne führendes "/")
+        const path = window.location.pathname.replace("/", "").toLowerCase();
+
+        // Prüfe, ob der Pfad eine Umleitung hat
+        if (redirects[path]) {
+            // Weiterleiten zur entsprechenden Ziel-URL
+            window.location.href = redirects[path];
+        } else {
+            // Falls der Pfad keine Umleitung hat, zeige eine Fehlermeldung
+            document.addEventListener("DOMContentLoaded", () => {
+                document.body.innerHTML = `
+                    <h1>Fehler: Der Link "${path}" wurde nicht gefunden!</h1>
+                    <p>Bitte überprüfen Sie die URL.</p>
+                `;
+            });
+        }
+    </script>
+</head>
+<body>
+    <p>Sie werden weitergeleitet...</p>
+</body>
+</html>
