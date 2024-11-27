@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script>
+        // Umleitungs-Zuordnung: Pfade zu Zieladressen
+        const redirects = {
+            "qr_code1": "https://play.famobi.com/onet-connect-classic",
+            "qr_code2": "https://play.famobi.com/cannon-balls-3d",
+            "link3": "https://example3.com"
+        };
+
+        // Hole den aktuellen Pfad der URL (ohne führendes "/")
+        const path = window.location.pathname.replace("/", "").toLowerCase();
+
+        // Prüfen, ob eine Umleitung für den aktuellen Pfad existiert
+        if (redirects[path]) {
+            // Weiterleiten zur Zieladresse
+            window.location.href = redirects[path];
+        } else {
+            // Fehleranzeige, wenn der Pfad nicht in der Liste gefunden wird
+            document.write(`
+                <h1>Fehler: Der Link "${path}" wurde nicht gefunden!</h1>
+                <p>Bitte überprüfen Sie die URL oder wenden Sie sich an den Administrator.</p>
+            `);
+        }
+    </script>
+</head>
+<body>
+    <p>Sie werden weitergeleitet...</p>
+</body>
+</html>
